@@ -1,0 +1,57 @@
+<body>
+    <div class="forca-container">
+        <h1 class="title">Jogo da Forca</h1>
+
+        <div class="forca-desenho">
+          <img src="assets/base.png" alt="Base da forca" class="base" />
+          <div class="boneco">
+            <div *ngIf="erros >= 1" class="cabeca"></div>
+            <div *ngIf="erros >= 2" class="tronco"></div>
+            <div *ngIf="erros >= 3" class="braco-esquerdo"></div>
+            <div *ngIf="erros >= 4" class="braco-direito"></div>
+            <div *ngIf="erros >= 5" class="perna-esquerda"></div>
+            <div *ngIf="erros >= 6" class="perna-direita"></div>
+          </div>
+        </div>
+
+        <div class="dica-container">
+          <button id="reiniciar" (click)="inicializarJogo()">
+            <img id="img-reiniciar" src="assets/restart.svg" alt="Ícone de reiniciar">
+          </button>        
+          <div class="dica-info">
+            <p id="dica"><strong>Dica:</strong> {{ dica }}</p>
+            <p id="qtd_letras"><strong>Quantidade de letras:</strong> {{ qtd_letras }}</p>
+          </div>
+        </div>
+
+        <p id="msg"> {{ mensagem }}</p>
+
+        <p>{{ progresso }}</p>
+    </div>
+
+    <div class="alfabeto-container">
+      <p id="selecionar">Selecione uma letra:</p>
+      <div class="alfabeto">
+        <button
+          *ngFor="let letra of alfabeto"
+          [disabled]="letrasTentadas.includes(letra) || jogoTerminado"
+          [ngClass]="{'certo': letrasCertas.includes(letra), 'errado': letrasErradas.includes(letra)}"
+          (click)="tentarLetra(letra)"
+        >
+          {{ letra }}
+        </button>
+      </div>
+    </div>
+
+    <div class="palavra-container">
+      <label id="palavra" for="palavra">Adivinhar a palavra:</label>
+      <input
+        type="text"
+        [(ngModel)]="palavra"
+      />
+      <button id="adivinhar-palavra" (click)="adivinharPalavra()">
+        <img id="img-advinhar" src="assets/done.svg" alt="Ícone de tentar palavra">
+      </button> 
+    </div>    
+    
+</body>

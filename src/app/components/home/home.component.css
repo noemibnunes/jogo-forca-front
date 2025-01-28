@@ -1,0 +1,244 @@
+body {
+    background-color: #5C7285;
+    padding: 20px 0;
+}
+
+.forca-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background: #5C7285
+  }
+  
+  .title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #E2E0C8
+  }
+
+  p, label {
+    color: #F2EFE7; !important
+  }
+
+  .dica-container {
+    display: flex;
+    align-items: left; 
+    gap: 10px; 
+    margin-bottom: 20px;
+  }
+  
+  #dica {
+    font-size: 1.5rem;
+    margin: 0;
+  }
+  
+  .dica-container {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .dica-info {
+    display: inline-block;
+    text-align: left;
+    margin-top: 10px;
+  }
+  
+  #reiniciar {
+    display: inline-block;
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #A7B49E;
+    cursor: pointer;
+  }
+  
+  #img-reiniciar, #img-adivinhar {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  #dica {
+    font-weight: bold;
+  }
+  
+  #qtd_letras {
+    font-size: 0.9em;
+  }
+
+  #msg {
+    font-size: 1rem;
+    float: left;
+    color: #FFF6DA
+  }
+
+  #selecionar, #palavra {
+    font-size: 1.2rem;
+  }
+    
+  .letras button {
+    margin: 5px;
+    padding: 10px;
+    font-size: 1rem;
+  }
+  
+  .alfabeto {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 10px 0;
+  }
+
+  .alfabeto-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .alfabeto button {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: #ddd;
+  }
+  
+  .alfabeto button.certo {
+    background-color: #4caf50; /* Verde */
+    color: white;
+  }
+  
+  .alfabeto button.errado {
+    background-color: #f44336; /* Vermelho */
+    color: white;
+  }
+  
+  .alfabeto button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .forca-desenho {
+    float: left;
+    width: 220px;
+  }
+  
+  .forca-desenho img {
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  .palavra-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+    gap: 10px;
+  }
+  
+  #adivinhar-palavra {
+    display: inline-block;
+    position: relative;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #A7B49E;
+    cursor: pointer;
+  }
+
+  #reiniciar:hover, #adivinhar-palavra:hover {
+    background-color: #818C78;
+  }
+  
+  input[type="text"] {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  
+  input[type="text"]:focus {
+    outline: none;
+    border-color: #A7B49E;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+  }
+
+/* Posição base do boneco */
+.boneco {
+  position: absolute;
+  left: 53%;
+  transform: translateX(-50%);
+  z-index: 1;
+  top: 240px;
+}
+
+/* Cabeça */
+.cabeca {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #D0DDD0;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Tronco */
+.tronco {
+  width: 8px;
+  height: 50px;
+  background-color: #D0DDD0;
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Braços */
+.braco-esquerdo, .braco-direito {
+  width: 20px;
+  height: 5px;
+  background-color: #D0DDD0;
+  position: absolute;
+  top: 30px;
+}
+
+.braco-esquerdo {
+  right: 50%;
+  transform: rotate(145deg);
+}
+
+.braco-direito {
+  left: 70%;
+  transform: rotate(30deg);
+}
+
+/* Pernas */
+.perna-esquerda, .perna-direita {
+  width: 5px;
+  height: 30px;
+  background-color: #D0DDD0;
+  position: absolute;
+  top: 55px;
+}
+
+.perna-esquerda {
+  right: 10%;
+  transform: rotate(193deg);
+}
+
+.perna-direita {
+  transform: rotate(170deg);
+}
