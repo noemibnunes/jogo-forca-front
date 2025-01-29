@@ -20,11 +20,14 @@ export class JogoDaForcaService {
       { letra }
     );
   }
-  
-  
 
-  adivinharPalavra(palavra: string): Observable<string> {
+  adivinharPalavra(palavra: string): Observable<{ mensagem: string; progresso: string; vitoria: boolean }> {
     const params = new HttpParams().set('palavra', palavra);
-    return this.http.post(`${this.apiUrl}/adivinhar`, {}, { params, responseType: 'text' });
+    return this.http.post<{ mensagem: string; progresso: string; vitoria: boolean }>(
+      `${this.apiUrl}/adivinhar`, 
+      {}, 
+      { params }
+    );
   }
+  
 }

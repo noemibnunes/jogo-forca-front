@@ -1,6 +1,5 @@
 body {
-    background-color: #5C7285;
-    padding: 20px 0;
+    background-color: #F0F0D7;
 }
 
 .forca-container {
@@ -8,18 +7,17 @@ body {
     flex-direction: column;
     align-items: center;
     font-family: Arial, sans-serif;
-    padding: 20px;
-    background: #5C7285
+    background: #F0F0D7
   }
   
   .title {
     font-size: 2.5rem;
-    margin-bottom: 20px;
-    color: #E2E0C8
+    margin-bottom: 15px;
+    color: #727D73
   }
 
   p, label {
-    color: #F2EFE7; !important
+    color: #A59D84; !important
   }
 
   .dica-container {
@@ -71,9 +69,21 @@ body {
   }
 
   #msg {
-    font-size: 1rem;
+    font-size: 1.1rem;
     float: left;
-    color: #FFF6DA
+    font-weight: bold;
+  }
+
+  .mensagem-progresso {
+    color: #727D73;
+  }
+
+  .mensagem-vermelha {
+    color: #8E1616;
+  }
+
+  .mensagem-verde {
+    color: #3E7B27;
   }
 
   #selecionar, #palavra {
@@ -174,13 +184,26 @@ body {
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
   }
 
+  .aviso-tentar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #aviso {
+    color: #DDA853;
+    font-size: 1.1rem;
+    margin-top: 5px;
+    font-weight: bold;
+  }
+
 /* Posição base do boneco */
 .boneco {
   position: absolute;
   left: 53%;
   transform: translateX(-50%);
   z-index: 1;
-  top: 240px;
+  top: 195px;
 }
 
 /* Cabeça */

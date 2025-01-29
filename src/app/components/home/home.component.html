@@ -24,7 +24,7 @@
           </div>
         </div>
 
-        <p id="msg"> {{ mensagem }}</p>
+        <p id="msg" [ngClass]="getMensagemClasse()">{{ mensagem }}</p>
 
         <p>{{ progresso }}</p>
     </div>
@@ -34,7 +34,7 @@
       <div class="alfabeto">
         <button
           *ngFor="let letra of alfabeto"
-          [disabled]="letrasTentadas.includes(letra) || jogoTerminado"
+          [disabled]="letrasTentadas.includes(letra) || vitoria"
           [ngClass]="{'certo': letrasCertas.includes(letra), 'errado': letrasErradas.includes(letra)}"
           (click)="tentarLetra(letra)"
         >
@@ -44,14 +44,19 @@
     </div>
 
     <div class="palavra-container">
-      <label id="palavra" for="palavra">Adivinhar a palavra:</label>
+      <label id="palavra" for="palavra">Adivinhe a palavra:</label>
       <input
         type="text"
         [(ngModel)]="palavra"
+        [disabled]="vitoria"
       />
-      <button id="adivinhar-palavra" (click)="adivinharPalavra()">
+      <button id="adivinhar-palavra" (click)="adivinharPalavra()" [disabled]="vitoria">
         <img id="img-advinhar" src="assets/done.svg" alt="Ícone de tentar palavra">
       </button> 
-    </div>    
+    </div>
+    
+    <div class="aviso-tentar">
+      <p id="aviso">⚠️ Atenção: Ao tentar adivinhar a palavra, se errar, o jogo acaba!</p>
+    </div>
     
 </body>

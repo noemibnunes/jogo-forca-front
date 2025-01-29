@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
   letrasTentadas: string[] = [];
   letrasCertas: string[] = [];
   letrasErradas: string[] = [];
-  jogoTerminado: boolean = false;
+  vitoria: boolean = false;
 
   constructor(private jogoDaForcaService: JogoDaForcaService) {}
 
@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
     this.letrasTentadas = [];
     this.letrasCertas = [];
     this.letrasErradas = [];
-    this.jogoTerminado = false;
+    this.vitoria = false;
     this.erros = 0;
 
     this.jogoDaForcaService.inicializarJogo().subscribe((data) => {
@@ -59,18 +59,33 @@ export class HomeComponent implements OnInit {
           this.letrasErradas.push(letra);
         }
 
-        this.jogoTerminado = response.vitoria !== null; 
+        if (response.vitoria !== null) {
+          this.vitoria = response.vitoria;
+        }
       });
     }
   }
 
   adivinharPalavra(): void {
-    if (!this.jogoTerminado) { 
-      this.jogoDaForcaService.adivinharPalavra(this.palavra).subscribe((response) => {
+    if (!this.vitoria) { 
+      this.jogoDaForcaService.adivinharPalavra(this.palavra).subscribe((response: { mensagem: string; progresso: string; vitoria: boolean }) => {
         this.palavra = '';
-        this.mensagem = response;
-        this.jogoTerminado = true; 
+        this.mensagem = response.mensagem; 
+        this.progresso = response.progresso
+        this.vitoria = response.vitoria;  
       });
     }
+  }  
+
+  getMensagemClasse(): string {
+    if (this.vitoria === false && this.mensagem.toLowerCase().includes('perdeu')) {
+      console.log(this.vitoria);
+      return 'mensagem-vermelha';
+    } else if (this.vitoria === true && this.mensagem.toLowerCase().includes('ganhou')) {
+      return 'mensagem-verde';  
+    } else {
+      return 'mensagem-progresso';
+    }
   }
+  
 }
